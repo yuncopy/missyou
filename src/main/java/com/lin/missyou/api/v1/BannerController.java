@@ -5,8 +5,10 @@ package com.lin.missyou.api.v1;
 import com.lin.missyou.core.interceptors.ScopeLevel;
 import com.lin.missyou.exception.http.NotFoundException;
 import com.lin.missyou.model.Banner;
+import com.lin.missyou.sample.hero.Mary;
 import com.lin.missyou.service.BannerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/banner")
 @Validated
+//@Lazy
 public class BannerController {
 
 //    @Autowired
@@ -21,6 +24,9 @@ public class BannerController {
 
     @Autowired
     private BannerService bannerService;
+
+    @Autowired //属性注入
+    private Mary mary;
 
     @GetMapping("/name/{name}")
     public Banner getByName(@PathVariable String name){
@@ -30,6 +36,31 @@ public class BannerController {
         }
         return banner;
     }
+
+    /*set方法注入
+    @Autowired
+    public void setMary(Mary mary) {
+        this.mary = mary;
+    }
+     */
+
+   /*构造函数注入
+    @Autowired
+    public BannerController(Mary mary){
+        //构造函数注入
+        this.mary = mary; // 定义属性使用构造函数注入
+    }
+     */
+
+    @GetMapping("/test")
+    public String getTest(){
+        mary.q();
+        return "你好 集润";
+    }
+
+
+
+
 
 //    @PostMapping(value = "/test/{id1}")
 //    public PersonDTO test(@PathVariable(name="id1") @Range(min = 1,max = 10,message = "不能超过10噢") Integer id,
