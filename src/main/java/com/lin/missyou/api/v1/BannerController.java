@@ -5,6 +5,8 @@ package com.lin.missyou.api.v1;
 import com.lin.missyou.core.interceptors.ScopeLevel;
 import com.lin.missyou.exception.http.NotFoundException;
 import com.lin.missyou.model.Banner;
+import com.lin.missyou.sample.IConnect;
+import com.lin.missyou.sample.ISkill;
 import com.lin.missyou.sample.hero.Mary;
 import com.lin.missyou.service.BannerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,11 @@ public class BannerController {
     private BannerService bannerService;
 
     @Autowired //属性注入
-    private Mary mary;
+    private ISkill camille;
+
+
+    @Autowired //属性注入
+    private IConnect iConnect;
 
     @GetMapping("/name/{name}")
     public Banner getByName(@PathVariable String name){
@@ -54,9 +60,16 @@ public class BannerController {
 
     @GetMapping("/test")
     public String getTest(){
-        mary.q();
+        camille.q();
         return "你好 集润";
     }
+
+    @GetMapping("/mysql")
+    public String getMsql(){
+        iConnect.connect();
+        return "你好 MySQL";
+    }
+
 
 
 

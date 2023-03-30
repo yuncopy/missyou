@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 //@Component
 //@Primary
 public class Diana implements ISkill {
-    public Diana() {
-        System.out.println("Hello,Diana");
-    }
+
+    //无参数构造函数
+    public Diana() { System.out.println("Hello,Diana"); }
 
     public void q(){
         System.out.println("Diana Q");
