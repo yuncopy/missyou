@@ -22,7 +22,7 @@ public class HeroConfiguration {
         return new Irelia();
     }
 
-    @Bean //加入容器
-    public ISkill camille(){ return  new Camille("php",18); }
+  //  @Bean //加入容器
+  //  public ISkill camille(){ return  new Camille("php",18); }
 
 }
