@@ -28,8 +28,7 @@ public class BannerController {
     private BannerService bannerService;
 
     @Autowired //属性注入
-    private ISkill camille;
-
+    private ISkill iSkill;
 
     @Autowired //属性注入
     private IConnect iConnect;
@@ -60,7 +59,7 @@ public class BannerController {
 
     @GetMapping("/test")
     public String getTest(){
-        camille.q();
+        iSkill.q();
         return "你好 集润";
     }
 

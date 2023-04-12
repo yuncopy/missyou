@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class DatabaseConfiguration {
-    @Value("${missyou.mysql.ip}")
+    @Value("${missyou.mysql.ip}") //读取配置文件
     private String ip;
 
     @Value("${missyou.mysql.port}")
@@ -18,7 +18,7 @@ public class DatabaseConfiguration {
 
     @Bean
     public IConnect mysql(){
-        //自定义实例化
+        //自动配置
         return new MySQL(this.ip,this.port);
     }
 
