@@ -58,9 +58,10 @@ public class BannerController {
      */
 
     @GetMapping("/test")
-    public String getTest(){
+    public String getTest() throws Exception{
         iSkill.q();
-        return "你好 集润";
+        throw  new Exception("这里出错啦");
+       // return "你好 集润";
     }
 
     @GetMapping("/mysql")
