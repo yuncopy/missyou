@@ -3,7 +3,6 @@ package com.lin.missyou.service;
 import com.lin.missyou.model.Spu;
 import com.lin.missyou.repository.SpuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +19,10 @@ public class SpuService {
 
     public Spu getSpu(Long id){
         return spuRepository.findOneById(id);
+    }
+
+    public List<Spu> getLatestPagingSpu1(){
+        return this.spuRepository.findAll();
     }
 
     public Page<Spu> getLatestPagingSpu(Integer pageNum, Integer size){
