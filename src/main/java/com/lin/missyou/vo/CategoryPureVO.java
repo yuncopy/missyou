@@ -16,6 +16,7 @@ public class CategoryPureVO {
     private Integer index;
 
     public CategoryPureVO(Category category) {
+        //属性复制进行赋值
         BeanUtils.copyProperties(category,this);
     }
 }

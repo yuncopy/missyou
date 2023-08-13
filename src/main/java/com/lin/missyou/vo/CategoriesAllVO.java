@@ -23,5 +23,20 @@ public class CategoriesAllVO {
         this.subs = map.get(2).stream()
                 .map(CategoryPureVO::new)
                 .collect(Collectors.toList());
+
+        /*
+        //第一种方式 VO构造函数直接处理 VO层按需处理数据比较合理
+        List<Category> roots = map.get(1);
+        roots.forEach(category1->{
+            CategoryPureVO categoryPureVO = new CategoryPureVO(category1);
+            this.roots.add(categoryPureVO);
+        });
+
+        List<Category> subs = map.get(2);
+        subs.forEach(category2->{
+            CategoryPureVO categoryPureVO = new CategoryPureVO(category2);
+            this.subs.add(categoryPureVO);
+        });
+         */
     }
 }

@@ -9,6 +9,12 @@ import javax.persistence.AttributeConverter;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @description:
+ * @author: jackin.chen
+ * @date: 2023/8/12 下午1:54
+ * @version :1.8
+ */
 public class MapAndJson implements AttributeConverter<Map<String,Object>,String> {
 
     @Autowired

@@ -17,11 +17,11 @@ public class OptionalTest {
 //        //构建Optional传入空值会报错
 //        Optional<String> t1 = Optional.of(null);
         //构建Optional允许传入空值
-//        Optional<String> t2 = Optional.ofNullable("a");
+       Optional<String> t2 = Optional.ofNullable("a");
 
 //        String s = t2.get();
 ////        t2不为空时执行ifPresent()中的语句
-//        t2.ifPresent(t-> System.out.println(t));  //lambada表达式写法
+        t2.ifPresent(t-> System.out.println(t));  //lambada表达式写法
 //        t2.ifPresent(System.out::println);          //方法引用写法
 //
         //传统写法
