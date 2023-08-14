@@ -8,7 +8,6 @@ import com.lin.missyou.model.User;
 import com.lin.missyou.service.UserService;
 import com.lin.missyou.util.JwtToken;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -64,9 +63,9 @@ public class PermissionInterceptor extends HandlerInterceptorAdapter {
 
 
     private Boolean hasPermission(ScopeLevel scopeLevel,Map<String,Claim> map){
-        Integer level = scopeLevel.value();
-        Integer scope = map.get("scope").asInt();
-        if(level > scope){
+        Integer level = scopeLevel.value(); //接口定义权限
+        Integer scope = map.get("scope").asInt(); //当前用户归属用户组的权限
+        if(level > scope){ //接口需要的权限 > 当前用户的用户组  则当前用户无权访问  权限数值越大越说明权限多
             throw new ForbiddenException(10005);
         }
         return true;

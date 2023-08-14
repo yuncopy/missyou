@@ -38,6 +38,15 @@ public class TokenController {
     }
 
     @PostMapping("/verify")
+    /**
+     * @description:  验证令牌是否合法和过期
+     * @param: token
+     * @return: java.util.Map<java.lang.String,java.lang.Boolean>
+     * @author: jackin.chen
+     * @date: 2023/8/13 下午10:30
+     * @method: verify
+     */
+
     public Map<String,Boolean> verify(@RequestBody TokenDTO token){
         Map<String,Boolean> map = new HashMap<>();
         Boolean valid = JwtToken.verifyToken(token.getToken());
