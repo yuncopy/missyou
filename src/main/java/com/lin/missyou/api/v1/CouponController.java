@@ -4,7 +4,6 @@ import com.lin.missyou.core.LocalUser;
 import com.lin.missyou.core.UnifyResponse;
 import com.lin.missyou.core.enumeration.CouponStatus;
 import com.lin.missyou.core.interceptors.ScopeLevel;
-import com.lin.missyou.exception.CreateSuccess;
 import com.lin.missyou.exception.http.ParameterException;
 import com.lin.missyou.model.Coupon;
 import com.lin.missyou.model.User;
@@ -58,6 +57,8 @@ public class CouponController {
     public List<CouponPureVO> getMyCouponByStatus(@PathVariable Integer status){
         Long uid = LocalUser.getUser().getId();
         List<Coupon> couponList;
+        //Integer level =  UserLevel.TRUE.getCode();
+
         switch (CouponStatus.toType(status)){
             case AVAILABLE:
                 couponList = couponService.getMyAvailable(uid);
