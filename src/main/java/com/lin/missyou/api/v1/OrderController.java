@@ -19,7 +19,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.Positive;
 import java.util.Optional;
 
 @RestController
@@ -49,6 +48,7 @@ public class OrderController {
         PageCounter page = CommonUtil.convertToPageParameter(start,count);
         Page<Order> orderPage = orderService.getUnpaid(page.getPage(),page.getCount());
         PagingDozer pagingDozer = new PagingDozer(orderPage,OrderSimplifyVO.class);
+        //设置超时时间
         pagingDozer.getItems().forEach(o -> ((OrderSimplifyVO)o).setPeriod(payTimeLimit));
         return pagingDozer;
     }

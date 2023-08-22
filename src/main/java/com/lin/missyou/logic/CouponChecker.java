@@ -6,17 +6,8 @@ import com.lin.missyou.core.money.IMoneyDiscount;
 import com.lin.missyou.exception.http.ForbiddenException;
 import com.lin.missyou.exception.http.ParameterException;
 import com.lin.missyou.model.Coupon;
-import com.lin.missyou.model.UserCoupon;
 import com.lin.missyou.util.CommonUtil;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Parameter;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -40,7 +31,14 @@ public class CouponChecker {
             throw new ForbiddenException(40007);
         }
     }
-
+    /***
+     * @description:
+     * @param: orderFinalTotalPrice 前端折扣价（最终价格 实付价格）
+     * @param: serverTotalPrice  服务端总价格（根据SKU计算）
+     * @author: jackin.chen
+     * @date: 2023/8/19 下午4:56
+     * @method: finalTotalPriceIsOk
+     */
     public void finalTotalPriceIsOk(BigDecimal orderFinalTotalPrice,
                                     BigDecimal serverTotalPrice){
         BigDecimal serverFinalTotalPrice;
@@ -91,7 +89,7 @@ public class CouponChecker {
         }
     }
 
-    private BigDecimal getSumByCategoryList(List<SkuOrderBO> skuOrderBOList,List<Long> cids){
+    private BigDecimal getSumByCategoryList(List<   SkuOrderBO> skuOrderBOList,List<Long> cids){
         BigDecimal sum = cids.stream()
                 .map(cid ->  getSumByCategory(skuOrderBOList,cid))
                 .reduce(BigDecimal::add)

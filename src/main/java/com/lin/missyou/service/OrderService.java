@@ -16,7 +16,6 @@ import com.lin.missyou.repository.OrderRepository;
 import com.lin.missyou.repository.SkuRepository;
 import com.lin.missyou.repository.UserCouponRepository;
 import com.lin.missyou.util.OrderUtil;
-import com.lin.missyou.vo.OrderSimplifyVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -27,7 +26,6 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.html.Option;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
@@ -88,15 +86,15 @@ public class OrderService {
         order.setSnapAddress(orderDTO.getAddress());
         order.setSnapItems(orderChecker.getOrderSkuList());
         this.orderRepository.save(order);
-        this.reduceStock(orderChecker);
         //reduceStock
+        this.reduceStock(orderChecker);
         //核销优惠券
-        //加入到延迟消息队列
         Long couponId = -1L;
         if(null != orderDTO.getCouponId()){
             couponId = orderDTO.getCouponId();
             this.writeOffCoupon(orderDTO.getCouponId(),order.getId(),uid);
         }
+        //加入到延迟消息队列
         sendToRedis(order.getId(),uid,couponId);
         return order.getId();
     }
@@ -124,6 +122,7 @@ public class OrderService {
         if(status == OrderStatus.ALL.value()){
             return orderRepository.findByUserId(uid,pageable);
         }
+        //不能查询待支付 和 已取消 状态
         return orderRepository.findByUserIdAndStatus(uid,status,pageable);
     }
 
