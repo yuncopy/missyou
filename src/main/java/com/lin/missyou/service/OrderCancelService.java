@@ -29,7 +29,7 @@ public class OrderCancelService {
     @Autowired
     private SkuRepository skuRepository;
 
-    @EventListener
+    @EventListener //这里打上事件标记即可执行监听
     @Transactional
     public void cancel(OrderMessageBO messageBO) {
         if (messageBO.getOid()<=0){

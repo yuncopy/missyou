@@ -1,9 +1,6 @@
 package com.lin.missyou.manager.redis;
 
 import com.lin.missyou.bo.OrderMessageBO;
-import com.lin.missyou.repository.OrderRepository;
-import com.lin.missyou.service.CouponBackService;
-import com.lin.missyou.service.OrderCancelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.redis.connection.Message;
@@ -14,6 +11,12 @@ import org.springframework.stereotype.Component;
 public class TopicMessageListener implements MessageListener {
 
     private static ApplicationEventPublisher publisher;
+
+   // @Autowired
+   // private CouponBackService couponBackService;
+
+   // @Autowired
+   // private OrderCancelService orderCancelService;
 
     @Autowired
     public void setPublisher(ApplicationEventPublisher publisher){
@@ -28,5 +31,8 @@ public class TopicMessageListener implements MessageListener {
         String topic = new String(channel);
         OrderMessageBO messageBO = new OrderMessageBO(expiredKey);
         TopicMessageListener.publisher.publishEvent(messageBO);
+
+        //couponBackService.returnBack(messageBO);
+        //orderCancelService.cancel(messageBO);
     }
 }
