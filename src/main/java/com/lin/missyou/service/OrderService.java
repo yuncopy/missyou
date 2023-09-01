@@ -128,6 +128,7 @@ public class OrderService {
 
     public Optional<Order> getOrderDetail(Long oid){
         Long uid = LocalUser.getUser().getId();
+        //必须待带入uid 不然可以根据订单号查询其他人的
         return this.orderRepository.findFirstByUserIdAndId(uid,oid);
     }
 
