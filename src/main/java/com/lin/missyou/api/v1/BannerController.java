@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/banner")
@@ -37,6 +38,7 @@ public class BannerController {
         if(null == banner){
             throw new NotFoundException(30005);
         }
+
         return banner;
     }
 
@@ -63,13 +65,16 @@ public class BannerController {
     }
 
     @GetMapping("/mysql")
-    public String getMsql(){
+    public String getMsql() {
         iConnect.connect();
         return "你好 MySQL";
     }
 
-
-
+    @GetMapping("/mysql1")
+    public void getMsql(HttpServletResponse response) throws IOException {
+        response.getWriter().write("你好 MySQL1"); //编码
+        //使用使用return 不操作原生的HttpServletResponse
+    }
 
 
 
