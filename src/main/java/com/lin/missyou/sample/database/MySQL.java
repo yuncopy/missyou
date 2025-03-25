@@ -1,7 +1,5 @@
 package com.lin.missyou.sample.database;
 
-import com.lin.missyou.sample.IConnect;
-
 public class MySQL implements IConnect {
     private String ip = "127.0.0.1";
     private Integer port = 3306;

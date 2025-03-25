@@ -1,15 +1,15 @@
-package com.lin.missyou.sample.condition;
+package com.lin.missyou.sample.condition.conf;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
-public class IreliaCondition implements Condition {
+public class DianaCondition implements Condition {
     @Override
+    @ConditionalOnProperty //成品条件注解
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-        //return true; // true 注解可以加入   false 没有加入
-        String name = conditionContext.getEnvironment().getProperty("hero.condition");
-        return  "diana".equalsIgnoreCase(name); // true
+
+        return false;
     }
 }
