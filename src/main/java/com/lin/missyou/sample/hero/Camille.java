@@ -1,7 +1,5 @@
 package com.lin.missyou.sample.hero;
 
-import com.lin.missyou.sample.ISkill;
-
 
 public class Camille implements ISkill {
     private String name; //特征

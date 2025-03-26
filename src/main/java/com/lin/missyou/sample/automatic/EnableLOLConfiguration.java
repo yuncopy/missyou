@@ -1,4 +1,4 @@
-package com.lin.missyou.sample;
+package com.lin.missyou.sample.automatic;
 
 import org.springframework.context.annotation.Import;
 

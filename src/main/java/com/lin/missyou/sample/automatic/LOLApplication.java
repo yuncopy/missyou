@@ -1,15 +1,8 @@
-package com.lin.missyou;
+package com.lin.missyou.sample.automatic;
 
-import com.lin.missyou.sample.EnableLOLConfiguration;
-import com.lin.missyou.sample.HeroConfiguration;
-import com.lin.missyou.sample.ISkill;
-import com.lin.missyou.sample.LOLConfigurationSelector;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Import;
-import org.springframework.stereotype.Component;
 
 //@ComponentScan // 第一种 导入IOC容器
 //@Import(HeroConfiguration.class) //第二种 导入IOC容器

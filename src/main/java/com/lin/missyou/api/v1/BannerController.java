@@ -3,7 +3,6 @@ package com.lin.missyou.api.v1;
 import com.lin.missyou.exception.http.NotFoundException;
 import com.lin.missyou.model.Banner;
 import com.lin.missyou.sample.database.IConnect;
-import com.lin.missyou.sample.ISkill;
 import com.lin.missyou.service.BannerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -20,14 +19,10 @@ import java.io.IOException;
 //@Lazy
 public class BannerController {
 
-//    @Autowired
-//    private ISkill iSkill;
 
     @Autowired
     private BannerService bannerService;
 
-    @Autowired //属性注入
-    private ISkill iSkill;
 
     @Autowired //属性注入
     private IConnect iConnect;
@@ -59,7 +54,6 @@ public class BannerController {
 
     @GetMapping("/test")
     public String getTest() throws Exception{
-        iSkill.q();
         throw  new Exception("这里出错啦");
        // return "你好 集润";
     }

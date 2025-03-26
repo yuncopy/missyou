@@ -1,7 +1,5 @@
 package com.lin.missyou.sample.hero;
 
-import com.lin.missyou.sample.ISkill;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,10 +1,8 @@
-package com.lin.missyou.sample.hero;
+package com.lin.missyou.sample.automatic.hero;
 
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
+import com.lin.missyou.sample.automatic.ISkill;
 
-@Component
-@Primary
+
 public class Diana implements ISkill {
 
     //无参数构造函数

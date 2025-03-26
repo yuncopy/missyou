@@ -1,6 +1,4 @@
-package com.lin.missyou.sample;
-
-import org.springframework.stereotype.Component;
+package com.lin.missyou.sample.automatic;
 
 public interface ISkill {
     void q();

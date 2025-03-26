@@ -1,6 +1,7 @@
-package com.lin.missyou.sample.hero;
+package com.lin.missyou.sample.automatic.hero;
 
-//@Component
+import com.lin.missyou.sample.automatic.ISkill;
+
 public class Irelia implements ISkill {
     public Irelia() {
         System.out.println("Hello,Irelia");
