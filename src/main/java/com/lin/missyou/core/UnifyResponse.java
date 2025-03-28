@@ -6,6 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+//新增@Getter才能序列化数据 + 返回对象方法加入 @ResponseBody
 public class UnifyResponse {
 
     private int code;

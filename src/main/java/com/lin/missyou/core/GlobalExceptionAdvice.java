@@ -31,7 +31,7 @@ public class GlobalExceptionAdvice {
 
         String method = req.getMethod();
         String requestUrl = req.getRequestURI();
-        System.out.println(e);
+        System.out.println(e); //打印异常信息 记录日志
         UnifyResponse unifyResponse = new UnifyResponse(9999,"服务器错误",method+" "+requestUrl);
         return unifyResponse;
     }
@@ -40,12 +40,19 @@ public class GlobalExceptionAdvice {
     public ResponseEntity<UnifyResponse> handleHttpException(HttpServletRequest req, HttpException e){
         String method = req.getMethod();
         String requestUrl = req.getRequestURI();
-        System.out.println(e);
+        System.out.println(e);//打印异常信息 记录日志
 
-        UnifyResponse unifyResponse = new UnifyResponse(e.getCode(),exceptionCodeConfiguration.getMessage(e.getCode()),method+" "+requestUrl);
-        HttpHeaders httpHeaders = new HttpHeaders();
+        //ResponseEntity 可以自定义 : HTTP状态码 、 HTTP头信息 、 返回的内容
+
+        int code = e.getCode();
+        String message = exceptionCodeConfiguration.getMessage(code);
+        String request = method+" "+requestUrl;
+        UnifyResponse unifyResponse = new UnifyResponse(code,message,request); // 返回的内容
+
+        HttpHeaders httpHeaders = new HttpHeaders(); //HTTP头信息
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        HttpStatus httpStatus = HttpStatus.resolve(e.getHttpStatusCode());
+
+        HttpStatus httpStatus = HttpStatus.resolve(e.getHttpStatusCode()); //HTTP状态码
 
         ResponseEntity<UnifyResponse> responseEntity = new ResponseEntity(unifyResponse,httpHeaders,httpStatus);
         return responseEntity;
