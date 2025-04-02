@@ -38,5 +38,12 @@ public class ThemeController {
     public Theme getThemeByNameWithSpu(@PathVariable String name){
         Optional<Theme> themeOptional = themeService.findByname(name);
         return themeOptional.orElseThrow(()-> new NotFoundException(30003));
+        /* Optional 目的： 简化代码 （标准化） / 强制判空（编译时暴露NPE错误） => 编译时标准化处理NPE错误
+         Banner banner = bannerService.getByName(name);
+         if(null == banner){
+            throw new NotFoundException(30005);
+         }
+         return banner;
+         */
     }
 }

@@ -11,7 +11,7 @@ import java.util.Map;
 @Component
 public class ExceptionCodeConfiguration {
 
-    private Map<Integer,String> codes = new HashMap<>();
+    private Map<Integer,String> codes = new HashMap<>(); //lin.codes[9999] = 服务器未知异常O(∩_∩)O哈哈~
 
     public Map<Integer, String> getCodes() {
         return codes;
