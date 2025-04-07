@@ -17,7 +17,7 @@ public interface SkuRepository extends JpaRepository<Sku,Long> {
             "set s.stock = s.stock - :quantity\n" +
             "where s.id = :sid\n" +
             "and s.stock >= :quantity")
-    int reduceStock(Long sid, Long quantity);
+    int reduceStock(Long sid, Long quantity); //减库存 防止多线程超卖  多线程乱序思路
 
 
     @Modifying
