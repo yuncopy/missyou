@@ -104,6 +104,8 @@ public class OrderService {
         try{
             stringRedisTemplate.opsForValue().set(key,"1",payTimeLimit, TimeUnit.SECONDS);
         }catch (Exception e){
+            //记录日志
+            //预警通知
             e.printStackTrace();
         }
     }
