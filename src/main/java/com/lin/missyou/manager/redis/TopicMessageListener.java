@@ -29,8 +29,10 @@ public class TopicMessageListener implements MessageListener {
         byte[] channel =message.getChannel();
         String expiredKey = new String(body);
         String topic = new String(channel);
+
+
         OrderMessageBO messageBO = new OrderMessageBO(expiredKey);
-        TopicMessageListener.publisher.publishEvent(messageBO);
+        TopicMessageListener.publisher.publishEvent(messageBO); // 发布事件 -> 广播
 
         //couponBackService.returnBack(messageBO);
         //orderCancelService.cancel(messageBO);

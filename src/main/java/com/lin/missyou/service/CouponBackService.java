@@ -4,11 +4,8 @@ import com.lin.missyou.bo.OrderMessageBO;
 import com.lin.missyou.core.enumeration.OrderStatus;
 import com.lin.missyou.exception.http.ServerErrorException;
 import com.lin.missyou.model.Order;
-import com.lin.missyou.repository.CouponRepository;
 import com.lin.missyou.repository.OrderRepository;
 import com.lin.missyou.repository.UserCouponRepository;
-import javafx.scene.layout.BorderRepeat;
-import jdk.nashorn.internal.runtime.options.Option;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
@@ -25,7 +22,7 @@ public class CouponBackService {
     @Autowired
     private OrderRepository orderRepository;
 
-    @EventListener
+    @EventListener //这里打上事件标记即可执行监听  监听事件
     @Transactional
     public void returnBack(OrderMessageBO messageBO){
         Long uid = messageBO.getUid();
