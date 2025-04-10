@@ -17,6 +17,18 @@ spring:
     database: 7
     password:
     listen-pattern: __keyevent@7__:expired
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer : org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+      retries: 3
+    consumer:
+      group-id: test-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
 missyou:
   security:
@@ -31,5 +43,4 @@ missyou:
     pay-time-limit: 1800
     pay-callback-host: http://talelin.com
     pay-callback-path: /v1/payment/wx/notify
-
 
