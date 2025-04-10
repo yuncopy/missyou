@@ -1,5 +1,6 @@
 package com.lin.missyou.manager.redis;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +15,7 @@ public class MessageListenerConfiguration {
     @Value("${spring.redis.listen-pattern}")
     public String pattern;
 
-    //@Autowired
+    @Autowired
     private TopicMessageListener topicMessageListener;
 
     //将listener注入到容器中，防止调用被管理的bean出现空指针
