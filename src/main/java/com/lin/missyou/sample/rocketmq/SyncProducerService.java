@@ -35,6 +35,7 @@ public class SyncProducerService {
                     tag /* Tag */,
                     message.getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
             );   //（3）
+            msg.setDelayTimeLevel(3);
             // 利用producer进行发送，并同步等待发送结果
             SendResult sendResult = producer.send(msg);   //（4）
             System.out.printf("%s%n", sendResult);

@@ -22,13 +22,18 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer : org.apache.kafka.common.serialization.StringSerializer
-      acks: all
-      retries: 3
     consumer:
       group-id: test-group
-      auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    topics:
+      delay-levels:
+        immediate: 0    # 立即处理
+        short_10s: 10   # 10秒延迟
+        medium_1m: 60   # 1分钟延迟
+        long_1h: 3600   # 1小时延迟
+      admin:
+        auto-create: true # 自动创建Topic
 
 missyou:
   security:

@@ -20,7 +20,8 @@ public class KafkaConsumerService {
     }
 
     // 获取消息元数据
-    @KafkaListener(topics = "test-topic")
+    //@KafkaListener(topics = "test-topic")
+    @KafkaListener(topics = "delay-immediate")
     public void consumeWithMetadata(String message,
                                     @Header(KafkaHeaders.RECEIVED_TOPIC) String topic,
                                     @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
