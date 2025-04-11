@@ -44,3 +44,10 @@ missyou:
     pay-callback-host: http://talelin.com
     pay-callback-path: /v1/payment/wx/notify
 
+rocketmq:
+  producer:
+    name-server-addr: localhost:9876
+    group-name: test-group
+  consumer:
+    name-server-addr: localhost:9876
+    group-name: test-group
